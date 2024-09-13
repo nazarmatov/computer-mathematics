@@ -1,5 +1,4 @@
 program machine_epsilon_extended
-  implicit non
   integer, parameter :: float16 = selected_real_kind(3, 10)
   integer, parameter :: float32 = selected_real_kind(6, 37)
   integer, parameter :: float64 = selected_real_kind(15, 307)
