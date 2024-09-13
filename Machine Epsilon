@@ -1,5 +1,4 @@
 program machine_epsilon
-    implicit none
     real :: epsilon
 
     epsilon = 1.0
