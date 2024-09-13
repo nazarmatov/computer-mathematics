@@ -1,5 +1,4 @@
 program machine_zero
-    implicit none
     real :: zero
 
     zero = 1.0
