@@ -1,0 +1,45 @@
+program machine_epsilon_extended
+  implicit non
+  integer, parameter :: float16 = selected_real_kind(3, 10)
+  integer, parameter :: float32 = selected_real_kind(6, 37)
+  integer, parameter :: float64 = selected_real_kind(15, 307)
+
+  real(float16) :: epsilon16, one_plus_epsilon16
+  real(float32) :: epsilon32, one_plus_epsilon32
+  real(float64) :: epsilon64, one_plus_epsilon64
+
+  epsilon16 = 1.0_float16
+  do
+    epsilon16 = epsilon16 / 2.0_float16
+    one_plus_epsilon16 = 1.0_float16 + epsilon16
+    if (one_plus_epsilon16 <= 1.0_float16) then
+      epsilon16 = epsilon16 * 2.0_float16
+      exit
+    end if
+  end do
+
+  epsilon32 = 1.0_float32
+  do
+    epsilon32 = epsilon32 / 2.0_float32
+    one_plus_epsilon32 = 1.0_float32 + epsilon32
+    if (one_plus_epsilon32 <= 1.0_float32) then
+      epsilon32 = epsilon32 * 2.0_float32
+      exit
+    end if
+  end do
+
+  epsilon64 = 1.0_float64
+  do
+    epsilon64 = epsilon64 / 2.0_float64
+    one_plus_epsilon64 = 1.0_float64 + epsilon64
+    if (one_plus_epsilon64 <= 1.0_float64) then
+      epsilon64 = epsilon64 * 2.0_float64
+      exit
+    end if
+  end do
+
+  print *, 'M. epsilon float16: ', epsilon16
+  print *, 'M. epsilon float32: ', epsilon32
+  print *, 'M. epsilon float64: ', epsilon64
+
+end program machine_epsilon_extended
