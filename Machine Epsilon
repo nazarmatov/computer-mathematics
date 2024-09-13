@@ -7,6 +7,6 @@ program machine_epsilon
         epsilon = epsilon / 2.0
     end do
 
-    print *, 'Машинный эпсилон:', epsilon
+    print *, 'Machine epsilon:', epsilon
 
 end program machine_epsilon
