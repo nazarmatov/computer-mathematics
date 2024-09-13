@@ -1,0 +1,14 @@
+program machine_zero
+    implicit none
+    real :: zero
+
+    zero = 1.0
+    do while (zero / 2.0 > 0.0)
+        zero = zero / 2.0
+    end do
+
+    zero = zero * 2.0
+
+    print *, 'Machine zero:', zero
+
+end program machine_zero
