@@ -1,0 +1,15 @@
+program machine_infinity
+    implicit none
+    real :: i, two_i
+
+    i = 1.0
+    two_i = 2.0 * i
+
+    do while (two_i > i)
+        i = two_i
+        two_i = 2.0 * i
+    end do
+
+    print *, 'Machine infinity:', i
+
+end program machine_infinity
