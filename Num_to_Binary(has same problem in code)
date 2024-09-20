@@ -1,0 +1,35 @@
+program number_to_binary
+    
+    real :: number, fractional_part
+    integer :: integer_part, i
+
+    print *, "Enter a number:"
+    read *, number
+
+    integer_part = int(number)
+    fractional_part = number - integer_part
+
+    if (integer_part == 0) then
+        write(*, '(I1)', advance='no') 0
+    else
+        do while (integer_part > 0)
+            write(*, '(I1)', advance='no') mod(integer_part, 2)
+            integer_part = integer_part / 2
+        end do
+    end if
+
+    if (fractional_part /= 0.0) then
+        write(*, '(A)', advance='no') "."
+        do i = 1, 20
+            fractional_part = fractional_part * 2
+            if (fractional_part >= 1.0) then
+                write(*, '(I1)', advance='no') 1
+                fractional_part = fractional_part - 1.0
+            else
+                write(*, '(I1)', advance='no') 0
+            end if
+            if (fractional_part == 0.0) exit
+        end do
+    end if
+
+end program number_to_binary
