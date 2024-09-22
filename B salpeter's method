@@ -1,0 +1,30 @@
+program integrate_sin
+  implicit none
+  integer :: n, i
+  real(8) :: a, b, h, integral, x
+  real(8), parameter :: pi = 3.141592653589793d0
+
+  a = pi
+  b = 3 * pi / 2.0d0
+  n = 1000
+  h = (b - a) / dble(n)
+  integral = 0.0d0
+
+  do i = 1, n-1
+     x = a + i * h
+     integral = integral + sin_func(x)
+  end do
+
+  integral = (sin_func(a) + sin_func(b)) / 2.0d0 + integral
+  integral = integral * h
+
+  print *, 'Значение интеграла: ', integral
+
+contains
+  real(8) function sin_func(x)
+    real(8), intent(in) :: x
+    sin_func = dsin(x)
+  end function sin_func
+
+end program integrate_sin
+
